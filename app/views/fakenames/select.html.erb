@@ -1,0 +1,50 @@
+-#  tdis file is app/views/movies/select.html.haml
+<h1> Selected Entry</h1>
+<table>
+<thead>
+ <tr>
+      <th>Gender</th>
+      <th>Title</th>
+      <th>Given Name</th>
+      <th>Middle Initial</th>
+      <th>SurName</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Email</th>
+ </tr>
+ </thead>
+ <tbody> 
+   <tr>
+   <td><%=@fakename.gender%></td>
+   <td><%=@fakename.title%></td>
+   <td><%=@fakename.givenname%></td>
+   <td><%=@fakename.middleinitial%></td>
+   <td><%=@fakename.surname%></td>
+   <td><%=@fakename.city%></td>
+   <td><%=@fakename.countryfull%></td>
+   <td><%=@fakename.emailaddress%></td>
+   </tr>
+</tbody>   
+</table> 
+ 
+<form action="/fakenames" accept-charset="UTF-8" method="post">
+<label for="movie_title">ID</label>
+<input type="text" name="id" id="movie_title" />
+<label for="movie_title">Title</label>
+<input type="text" name="gender" id="movie_title" />
+<label for="movie_title">Title</label>
+<input type="text" name="title" id="movie_title" />
+<label for="movie_title">Given Name</label>
+<input type="text" name="givenname" id="movie_title" />
+<label for="movie_title">Middle Initial</label>
+<input type="text" name="middleinitial" id="movie_title" />
+<label for="movie_title">Surname</label>
+<input type="text" name="surname" id="movie_title" />
+<label for="movie_title">City</label>
+<input type="text" name="city" id="movie_title" />
+<label for="movie_title">Country</label>
+<input type="text" name="countryfull" id="movie_title" />
+<label for="movie_title">E-Mail</label>
+<input type="text" name="emailaddress" id="movie_title" />
+<input type="hidden" name="_method" value="put" /><input type = "submit" method =  "put">
+</form>

@@ -1,0 +1,34 @@
+-#  tdis file is app/views/movies/index.html.haml
+<h1> Database </h1>
+<%= button_to "NEW", fakenames_new_path, :method => "get" %>
+<%= button_to "EDIT", fakenames_edit_path, :method => "get" %>
+<table>
+<thead>
+ <tr>
+      <th>Gender</th>
+      <th>Title</th>
+      <th>Given Name</th>
+      <th>Middle Initial</th>
+      <th>SurName</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Email</th>
+ </tr>
+ </thead>
+ <tbody> 
+   <%@fakenames.each do |fakename| %>
+   <tr>
+   <td><%=fakename.gender%></td>
+   <td><%=fakename.title%></td>
+   <td><%=fakename.givenname%></td>
+   <td><%=fakename.middleinitial%></td>
+   <td><%=fakename.surname%></td>
+   <td><%=fakename.city%></td>
+   <td><%=fakename.countryfull%></td>
+   <td><%=fakename.emailaddress%></td>
+   </tr>
+   <%end%>
+</tbody>   
+</table> 
+ 
+ 

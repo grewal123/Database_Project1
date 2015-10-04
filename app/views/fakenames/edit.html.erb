@@ -1,0 +1,15 @@
+<h1>Fakenames#edit</h1>
+<p>Find me in app/views/fakenames/show.html.haml</p>
+<h2>Delete<h3>
+<form method = "post" action="/fakenames">
+<label for="search">Email</label>
+<input type="text" name="emailaddress" id="search" />
+<input type="hidden" name="_method" value="delete" /><input type = "submit" method =  "delete">
+</form>
+<h2>Select<h3>
+<form method = "get" action="/fakenames/select">
+<label for="search">Email</label>
+<input type="text" name="emailaddress" id="search" />
+<input type="hidden" name="_method" value="get" /><input type = "submit" method =  "get">
+</form> 
+
