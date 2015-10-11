@@ -1,0 +1,2 @@
+module FakessnsHelper
+end

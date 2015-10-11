@@ -1,0 +1,22 @@
+-#  tdis file is app/views/movies/index.html.haml
+<h1> FakeSSN </h1>
+<%= button_to "Homepage", fakenames_path, :method => "get" %>
+<table>
+<thead>
+ <tr>
+      <th>SSN</th>
+      <th>Email</th>
+ </tr>
+ </thead>
+ <tbody> 
+   <%@fakessns.each do |fakessn| %>
+   <tr>
+   <td><%=fakessn.ssn%></td>
+   <td><%=fakessn.emailaddress%></td>
+   </tr>
+   <%end%>
+</tbody>   
+</table> 
+
+ 
+ 
