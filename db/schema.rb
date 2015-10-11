@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002004610) do
+ActiveRecord::Schema.define(version: 20151011031318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "fakenames", force: :cascade do |t|
+  create_table "fakenames", id: false, force: :cascade do |t|
+    t.integer  "id",            default: 0,       null: false
     t.string   "gender"
     t.string   "title"
     t.string   "givenname"
@@ -24,6 +25,13 @@ ActiveRecord::Schema.define(version: 20151002004610) do
     t.string   "surname"
     t.string   "city"
     t.string   "countryfull"
+    t.string   "emailaddress",  default: "now()"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fakessns", force: :cascade do |t|
+    t.string   "ssn"
     t.string   "emailaddress"
     t.datetime "created_at"
     t.datetime "updated_at"
