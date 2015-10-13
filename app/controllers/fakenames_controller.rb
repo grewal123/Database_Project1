@@ -17,7 +17,6 @@ class FakenamesController < ApplicationController
    @fakename = Fakename.where(:surname=>params[:surname]).first
    session[:query] = "surname"
    session[:surname] = @fakename.surname
-   debugger
    end
    end
    
