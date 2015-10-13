@@ -6,10 +6,16 @@
 <input type="text" name="emailaddress" id="search" />
 <input type="hidden" name="_method" value="delete" /><input type = "submit" method =  "delete">
 </form>
-<h2>Select<h3>
+<h2>Search by email<h3>
 <form method = "get" action="/fakenames/select">
 <label for="search">Email</label>
 <input type="text" name="emailaddress" id="search" />
 <input type="hidden" name="_method" value="get" /><input type = "submit" method =  "get">
 </form> 
 
+<h2>Search by Surname<h3>
+<form method = "get" action="/fakenames/select">
+<label for="search">Surname</label>
+<input type="text" name="surname" id="search" />
+<input type="hidden" name="_method" value="get" /><input type = "submit" method =  "get">
+</form>

@@ -1,19 +1,28 @@
 class FakenamesController < ApplicationController
   skip_before_filter :verify_authenticity_token 	
   def new
-  
-  
   #Fakename.create(gender:@gender, title:@title , givenname:@givenname, middleinitial:@middleinitial, surname:@surname , city:@city, countryfull:@countryfull,emailaddress:@emailaddress)
   end
+  
   def index
   @fakenames = Fakename.all
   end
+  
    def select
+   if params.key?(:emailaddress)
    @fakename = Fakename.where(:emailaddress=>params[:emailaddress]).first
-   session[:query] = @fakename.emailaddress
+   session[:query] = "emailaddress"
+   session[:emailaddress] = @fakename.emailaddress
+   elsif params.key?(:surname)
+   @fakename = Fakename.where(:surname=>params[:surname]).first
+   session[:query] = "surname"
+   session[:surname] = @fakename.surname
+   debugger
    end
-   def create
-   @gender = params[:gender]
+   end
+   
+  def create
+  @gender = params[:gender]
   @title = params[:title]
   @givenname = params[:givenname]
   @middleinitial = params[:middleinitial]
@@ -37,13 +46,13 @@ class FakenamesController < ApplicationController
   fakessn.save
   fakename.save
   end
+  
   def delete
-  #@fakename = Fakename.where(:emailaddress => params[:emailaddress]).first
   Fakename.delete_all(:emailaddress => params[:emailaddress])
   Fakessn.delete_all(:emailaddress => params[:emailaddress])
   end
+  
   def update
-  @id = params[:id]
   @gender = params[:gender]
   @title = params[:title]
   @givenname = params[:givenname]
@@ -53,11 +62,17 @@ class FakenamesController < ApplicationController
   @countryfull = params[:countryfull]
   @emailaddress = params[:emailaddress]
   @ssn = params[:ssn]
-  @fakename = Fakename.where(:emailaddress=>session[:query])
+  if session[:query]  == "emailaddress"
+  @fakename = Fakename.where(:emailaddress=>session[:emailaddress])
   @fakessn = Fakessn.where(:emailaddress=>session[:query])
-  @fakename.update_all(:title => @title,:gender =>@gender , :title => @title ,:givenname =>@givenname,:middleinitial =>@middleinitial,:surname=>@surname, :city =>@city,:countryfull =>@countryfull,:emailaddress=>@emailaddress)
+  elsif session[:query] == "surname"
+  @fakename = Fakename.where(:surname=>session[:surname])
+  @fakessn = Fakessn.where(:emailaddress=>@fakename.first.emailaddress)
+  end
+  @fakename.update_all(:title => @title,:gender =>@gender ,:givenname =>@givenname,:middleinitial =>@middleinitial,:surname=>@surname, :city =>@city,:countryfull =>@countryfull,:emailaddress=>@emailaddress)
   @fakessn.update_all(:emailaddress => @emailaddress , :ssn => @ssn)
   end
+  
   def edit
   end
 end

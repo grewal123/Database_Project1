@@ -4,15 +4,15 @@
 <table>
 <thead>
  <tr>
-      <th>SSN</th>
       <th>Email</th>
+      <th>SSN</th>
  </tr>
  </thead>
  <tbody> 
    <%@fakessns.each do |fakessn| %>
    <tr>
-   <td><%=fakessn.ssn%></td>
    <td><%=fakessn.emailaddress%></td>
+   <td><%=fakessn.ssn%></td>
    </tr>
    <%end%>
 </tbody>   
